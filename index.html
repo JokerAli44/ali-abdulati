@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منصة مطاعم Ali Abdulati | جمر وذهب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050302;--bg2:#0b0603;--card:#140d06;--card2:#1e1309;--gold:#e8b64c;--gold2:#f7d98b;--gold3:#ffedbd;--or:#ff7a1c;--or2:#ff9a3c;--ember:#ff5a1c;--tx:#f7ecd9;--mut:#c9a86e;--line:#3a2b16;--line2:#5a4326}
+body.light{--bg:#f7f0e0;--bg2:#fbf5e8;--card:#fffaf0;--card2:#f7ead0;--tx:#2b1c08;--mut:#8a6a35;--line:#e2cf9f;--line2:#d4bc82}
+html{scroll-behavior:smooth}
+::-webkit-scrollbar{width:11px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--or));border-radius:10px;border:2px solid var(--bg)}
+body{background:var(--bg);color:var(--tx);font-family:'Readex Pro',sans-serif;overflow-x:hidden;transition:background .6s,color .6s}
+h1,h2,h3,.lz{font-family:'Lalezar',cursive;font-weight:400;letter-spacing:.5px}
+@media(pointer:fine){body,button,a,input,select,textarea,summary{cursor:none}}
+#emberCv{position:fixed;inset:0;z-index:0;pointer-events:none}
+#cur{position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:var(--gold3);z-index:1000;pointer-events:none;box-shadow:0 0 12px var(--gold),0 0 24px var(--or)}
+#curR{position:fixed;top:0;left:0;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(232,182,76,.6);z-index:999;pointer-events:none;transition:width .25s,height .25s,border-color .25s,background .25s}
+#curR.big{width:64px;height:64px;border-color:var(--or);background:rgba(255,122,28,.08)}
+@media(pointer:coarse){#cur,#curR{display:none}}
+header{position:sticky;top:0;z-index:600;display:flex;align-items:center;gap:1rem;padding:.9rem 1.5rem;background:color-mix(in srgb,var(--bg) 65%,transparent);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.logo{font-family:'Lalezar';font-size:1.7rem;display:flex;align-items:center;gap:.5rem;color:var(--gold2);text-shadow:0 0 24px rgba(232,182,76,.5)}
+.logo .crown{font-size:1.9rem;animation:crownFl 3s ease-in-out infinite}
+@keyframes crownFl{50%{transform:translateY(-5px) rotate(-5deg)}}
+.hright{margin-inline-start:auto;display:flex;align-items:center;gap:.8rem}
+.livepill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,90,28,.12);border:1px solid rgba(255,122,28,.4);color:var(--or2);padding:.4rem 1rem;border-radius:99px;font-size:.8rem;font-weight:600}
+.livepill i{width:8px;height:8px;border-radius:50%;background:var(--ember);animation:pulse 1.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,28,.6)}70%{box-shadow:0 0 0 9px rgba(255,90,28,0)}100%{box-shadow:0 0 0 0 rgba(255,90,28,0)}}
+.iconb{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--gold2);font-size:1.1rem;cursor:pointer;transition:.3s}
+.iconb:hover{border-color:var(--gold);box-shadow:0 0 18px rgba(232,182,76,.4);transform:translateY(-2px)}
+.dock{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);display:flex;gap:6px;padding:10px 12px;background:color-mix(in srgb,var(--card) 72%,transparent);backdrop-filter:blur(24px);border:1px solid var(--line2);border-radius:24px;z-index:650;box-shadow:0 25px 60px rgba(0,0,0,.6),0 0 30px rgba(232,182,76,.08)}
+.dk{width:56px;height:56px;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:transparent;border:0;color:var(--mut);transition:.35s cubic-bezier(.3,1.6,.4,1)}
+.dk .em{font-size:1.5rem;transition:.35s}.dk .lb{font-size:.56rem;font-family:'Readex Pro';opacity:0;transform:translateY(5px);transition:.3s}
+.dk:hover{transform:translateY(-10px) scale(1.15);background:rgba(232,182,76,.14);color:var(--gold2)}
+.dk:hover .em{transform:scale(1.15)}.dk:hover .lb{opacity:1;transform:none}
+.dk.act{background:linear-gradient(135deg,var(--gold),var(--or));color:#241503}.dk.act .lb{opacity:1;transform:none}
+main{max-width:1280px;margin:auto;padding:1.5rem 1.4rem 120px;position:relative;z-index:1}
+.view{display:none}.view.on{display:block;animation:viewIn .6s cubic-bezier(.2,.7,.3,1)}
+@keyframes viewIn{from{opacity:0;transform:translateY(30px)}}
+.rev{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.7,.3,1)}.rev.in{opacity:1;transform:none}
+.hero{position:relative;min-height:84vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:36px;border:1px solid var(--line);margin-top:.5rem}
+.herobg{position:absolute;inset:-60px;background:url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=70') center/cover no-repeat;animation:kb 24s ease-in-out infinite alternate;filter:brightness(.7) saturate(1.15)}
+.herobg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(5,3,2,.3),rgba(5,3,2,.92) 82%)}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.14)}}
+.hero-in{position:relative;z-index:2;text-align:center;padding:3.5rem 1.2rem}
+.hero .kick{display:inline-flex;align-items:center;gap:.6rem;color:var(--or2);font-size:.9rem;font-weight:600;letter-spacing:2px;margin-bottom:1.2rem}
+.hero .kick::before,.hero .kick::after{content:'';width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hero .kick::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.hero h1{font-size:clamp(3rem,9vw,6rem);line-height:1.05;margin-bottom:.5rem}
+.hero h1 span{display:inline-block;background:linear-gradient(120deg,var(--gold3),var(--gold),var(--or));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateY(40px) rotate(8deg);animation:letter .7s forwards cubic-bezier(.2,.7,.3,1.3);filter:drop-shadow(0 4px 25px rgba(232,182,76,.35))}
+@keyframes letter{to{opacity:1;transform:none}}
+.type{color:var(--or2);font-size:1.35rem;margin-top:.8rem;min-height:2.3rem;font-weight:600}
+.cur2{animation:blink 1s step-end infinite;color:var(--gold)}
+@keyframes blink{50%{opacity:0}}
+.hero p.sub{color:var(--tx);margin-top:.6rem;font-size:1.05rem;max-width:620px;margin-inline:auto;opacity:.9}
+.cta{display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.btn{background:linear-gradient(135deg,var(--gold),var(--or));border:0;color:#241503;font-weight:700;padding:.85rem 2rem;border-radius:14px;cursor:pointer;font-family:'Readex Pro';font-size:.95rem;transition:transform .3s,box-shadow .3s;box-shadow:0 8px 25px rgba(255,122,28,.35);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden;will-change:transform}
+.btn::before{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:.6s}
+.btn:hover{box-shadow:0 12px 35px rgba(255,122,28,.6)}.btn:hover::before{left:130%}
+.btn.ghost{background:transparent;color:var(--gold2);border:1.5px solid var(--gold);box-shadow:none}
+.btn.ghost:hover{background:rgba(232,182,76,.1);box-shadow:0 0 25px rgba(232,182,76,.3)}
+.btn.danger{background:transparent;color:#ff7b7b;border:1.5px solid #ff6b6b;box-shadow:none}.btn.danger:hover{background:rgba(255,107,107,.12)}
+.bigmq{overflow:hidden;padding:2.5rem 0;white-space:nowrap;display:flex;border-block:1px solid var(--line);margin:3rem 0;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.bigmq span{font-family:'Lalezar';font-size:4rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(232,182,76,.4);animation:mq 22s linear infinite;padding-inline-end:3rem}
+.bigmq span b{color:var(--gold);-webkit-text-stroke:0}
+@keyframes mq{to{transform:translateX(50%)}}
+.st{display:flex;align-items:center;gap:1rem;margin:2.8rem 0 1.3rem}
+.st .no{font-family:'Lalezar';font-size:1.1rem;color:var(--or2);border:1px solid var(--line2);padding:.3rem .7rem;border-radius:10px;background:var(--card)}
+.st h2{font-size:2.2rem;color:var(--gold2)}
+.st .ln{flex:1;height:2px;background:linear-gradient(90deg,var(--gold),var(--or),transparent);border-radius:2px;transform-origin:right;animation:drawLn 1s both}
+@keyframes drawLn{from{transform:scaleX(0)}}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.2rem;perspective:1200px}
+.card{background:linear-gradient(160deg,rgba(232,182,76,.06),rgba(255,122,28,.02)),var(--card);border:1px solid var(--line);border-radius:24px;padding:1.8rem 1rem;text-align:center;cursor:pointer;transition:box-shadow .4s,border-color .4s;position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(350px 200px at var(--mx,50%) var(--my,0%),rgba(247,217,139,.18),transparent 65%);opacity:0;transition:.4s;pointer-events:none}
+.card:hover::before{opacity:1}.card:hover{border-color:var(--gold);box-shadow:0 25px 50px rgba(0,0,0,.55),0 0 35px rgba(232,182,76,.2)}
+.card .ic{font-size:3rem;display:inline-block;transition:.5s cubic-bezier(.3,1.6,.4,1);filter:drop-shadow(0 8px 16px rgba(0,0,0,.45))}
+.card:hover .ic{transform:translateY(-8px) scale(1.25)}
+.card h3{color:var(--gold2);font-size:1.5rem;margin:.7rem 0 .2rem}.card p{color:var(--mut);font-size:.83rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1.1rem}
+.grid>div{background:linear-gradient(160deg,rgba(232,182,76,.05),transparent),var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem;transition:.4s;position:relative;overflow:hidden}
+.grid>div::after{content:'';position:absolute;top:0;left:0;width:70px;height:70px;background:radial-gradient(circle,rgba(255,122,28,.18),transparent 70%);border-radius:50%;transform:translate(-30%,-30%)}
+.grid>div:hover{border-color:var(--or);transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.grid .e{font-size:2.2rem}.grid h4{color:var(--gold2);font-family:'Lalezar';font-size:1.3rem;margin:.5rem 0}.grid p{color:var(--mut);font-size:.86rem;line-height:1.7}
+.story{background:linear-gradient(160deg,rgba(232,182,76,.05),transparent),var(--card);border:1px solid var(--line);border-radius:22px;padding:2rem;line-height:2.1;position:relative;overflow:hidden}
+.story::before{content:'🔥';position:absolute;top:-15px;left:-15px;font-size:7rem;opacity:.05}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:.9rem}
+.gal img,.etile{width:100%;height:165px;object-fit:cover;border-radius:18px;border:1px solid var(--line);transition:.45s cubic-bezier(.2,.7,.3,1)}
+.gal img:hover{transform:scale(1.06) rotate(1.5deg);border-color:var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.55)}
+.etile{display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--card2)}
+.tl{border-inline-start:2px solid var(--gold);padding-inline-start:1.7rem;margin:1.3rem 0;display:grid;gap:1.5rem}
+.tl div{position:relative;transition:.3s}.tl div:hover{transform:translateX(-6px)}
+.tl div::before{content:'';position:absolute;inset-inline-start:-2.1rem;top:.4rem;width:14px;height:14px;border-radius:50%;background:var(--or);box-shadow:0 0 0 5px rgba(255,122,28,.18),0 0 16px var(--or)}
+.tl b{color:var(--gold2);font-family:'Lalezar';font-size:1.2rem;display:block}.tl p{color:var(--mut);font-size:.89rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.3rem 0;padding:.55rem;background:color-mix(in srgb,var(--card) 65%,transparent);border-radius:20px;border:1px solid var(--line);backdrop-filter:blur(12px)}
+.tab{border:0;background:transparent;color:var(--mut);padding:.6rem 1.1rem;border-radius:13px;cursor:pointer;font-family:'Readex Pro';font-size:.86rem;transition:.3s}
+.tab:hover{color:var(--gold2);background:rgba(232,182,76,.09)}
+.tab.act{background:linear-gradient(135deg,var(--gold),var(--or));color:#241503;font-weight:700;box-shadow:0 5px 18px rgba(255,122,28,.4)}
+.panel{display:none}.panel.on{display:block;animation:viewIn .5s}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1rem}
+.stat{background:linear-gradient(160deg,rgba(232,182,76,.07),transparent),var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem;text-align:center;transition:.4s;position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,122,28,.14),transparent 60%);opacity:0;transition:.4s}
+.stat:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 18px 40px rgba(0,0,0,.45),0 0 30px rgba(232,182,76,.2)}.stat:hover::before{opacity:1}
+.stat b{font-family:'Lalezar';font-size:2.3rem;color:var(--or2);display:block;text-shadow:0 0 22px rgba(255,122,28,.4)}.stat span{color:var(--mut);font-size:.83rem}
+.brow{margin:1.2rem 0}.brow .lbl{display:flex;justify-content:space-between;font-size:.88rem;color:var(--mut);margin-bottom:.45rem}
+.bar{height:13px;background:var(--card2);border-radius:99px;overflow:hidden;border:1px solid var(--line);box-shadow:inset 0 2px 6px rgba(0,0,0,.4)}
+.bar b{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--ember),var(--gold2));box-shadow:0 0 16px rgba(255,122,28,.7);transition:width 1.4s cubic-bezier(.2,.7,.3,1)}
+table{width:100%;border-collapse:collapse;font-size:.87rem;background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+th,td{padding:.8rem;border-bottom:1px solid var(--line);text-align:right}
+th{color:var(--gold2);font-family:'Lalezar';font-size:1.05rem;background:color-mix(in srgb,var(--card2) 70%,transparent)}
+tr:hover td{background:rgba(232,182,76,.05)}
+input,select,textarea{width:100%;background:color-mix(in srgb,var(--bg2) 85%,#000);border:1.5px solid var(--line);color:var(--tx);padding:.75rem .95rem;border-radius:13px;font-family:'Readex Pro';margin-top:.4rem;transition:.3s}
+body.light input,body.light select,body.light textarea{background:#fff;color:#2b1c08}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(232,182,76,.15)}
+label{font-size:.83rem;color:var(--mut)}.form{display:grid;gap:.85rem;max-width:540px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--mut);padding:.5rem 1.15rem;border-radius:99px;cursor:pointer;font-size:.84rem;transition:.3s;font-family:'Readex Pro'}
+.chip:hover{color:var(--gold2);border-color:var(--gold);transform:translateY(-2px)}
+.chip.act{background:linear-gradient(135deg,var(--gold),var(--or));color:#241503;font-weight:700;border-color:transparent;box-shadow:0 5px 16px rgba(255,122,28,.4)}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.3rem}
+.dish{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.4s cubic-bezier(.2,.7,.3,1)}
+.dish:hover{border-color:var(--gold);transform:translateY(-8px);box-shadow:0 25px 50px rgba(0,0,0,.55),0 0 30px rgba(232,182,76,.15)}
+.dish .imw{overflow:hidden;height:155px;position:relative}
+.dish .imw::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,3,2,.75));pointer-events:none}
+.dish img,.dish .etile{width:100%;height:155px;object-fit:cover;transition:.6s cubic-bezier(.2,.7,.3,1)}
+.dish:hover img{transform:scale(1.14)}
+.dish .bd{padding:1rem}.dish h4{color:var(--gold2);font-family:'Lalezar';font-size:1.2rem}
+.dish .cat{font-size:.7rem;color:var(--gold2);background:rgba(232,182,76,.12);border:1px solid rgba(232,182,76,.3);border-radius:99px;padding:.12rem .6rem;display:inline-block;margin-bottom:.45rem}
+.price{color:var(--or2);font-weight:700}
+.cartbox{background:linear-gradient(160deg,rgba(232,182,76,.06),transparent),var(--card);border:1px solid var(--gold);border-radius:22px;padding:1.4rem;margin-top:1.6rem;box-shadow:0 0 45px rgba(232,182,76,.15)}
+.crow{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.9rem;flex-wrap:wrap}
+.qty{display:flex;gap:.5rem;align-items:center}
+.qty button{width:30px;height:30px;border-radius:10px;border:1px solid var(--gold);background:transparent;color:var(--gold2);cursor:pointer;transition:.25s;font-weight:700}
+.qty button:hover{background:var(--gold);color:#241503;transform:scale(1.12)}
+.low{color:#ff7b7b;font-weight:700}
+.pos{display:grid;grid-template-columns:2fr 1fr;gap:1.2rem}
+.positems{display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:.7rem;margin-top:.7rem}
+.pitem{background:var(--card2);border:1px solid var(--line);border-radius:15px;padding:.85rem .4rem;text-align:center;cursor:pointer;transition:.28s;font-size:.79rem}
+.pitem:hover{border-color:var(--or);transform:translateY(-5px) scale(1.04);box-shadow:0 10px 24px rgba(255,122,28,.25)}
+.pitem .e{font-size:1.7rem;display:block}
+.owner{display:grid;grid-template-columns:auto 1fr;gap:1.9rem;align-items:center;background:linear-gradient(160deg,rgba(232,182,76,.08),transparent),var(--card);border:1px solid var(--gold);border-radius:26px;padding:2.2rem;box-shadow:0 0 55px rgba(232,182,76,.15)}
+.avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 0 35px rgba(232,182,76,.5);animation:crownFl 4s ease-in-out infinite}
+.avatar-fb{width:140px;height:140px;border-radius:50%;display:none;align-items:center;justify-content:center;font-family:'Lalezar';font-size:4rem;color:#241503;background:linear-gradient(135deg,var(--gold2),var(--or));border:3px solid var(--gold)}
+.chips{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.1rem}
+.tst{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:1.4rem;transition:.35s;position:relative}
+.tst::before{content:'"';position:absolute;top:.2rem;left:1.1rem;font-size:3.5rem;color:rgba(232,182,76,.15);font-family:serif}
+.tst:hover{border-color:var(--gold);transform:translateY(-5px)}
+.tst .stx{font-size:.88rem;line-height:1.8}.tst .who{color:var(--gold2);font-weight:700;margin-top:.7rem;font-size:.86rem}
+.stars{color:var(--gold);letter-spacing:2px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:.85rem;overflow:hidden;transition:.3s}
+details:hover{border-color:var(--gold)}
+summary{cursor:pointer;padding:1.05rem 1.3rem;color:var(--gold2);font-weight:600;list-style:none}
+summary::before{content:'❓ '}
+details p{padding:0 1.3rem 1.1rem;color:var(--mut);font-size:.89rem;line-height:1.9}
+details[open]{border-color:var(--gold);box-shadow:0 0 25px rgba(232,182,76,.2)}
+.adminBar{display:flex;align-items:center;justify-content:space-between;gap:.6rem;background:linear-gradient(135deg,rgba(232,182,76,.12),rgba(255,122,28,.08));border:1px solid var(--gold);border-radius:18px;padding:1rem 1.3rem;margin-bottom:1.3rem;flex-wrap:wrap}
+#loginOverlay{position:fixed;inset:0;z-index:700;display:none;align-items:center;justify-content:center;background:radial-gradient(900px 600px at 50% 30%,rgba(42,26,8,.96),rgba(5,3,2,.98));backdrop-filter:blur(16px)}
+#loginOverlay.show{display:flex;animation:viewIn .4s}
+.loginCard{position:relative;width:min(410px,92vw);padding:2.8rem 2.1rem 2.3rem;border-radius:30px;background:linear-gradient(165deg,#1d1409,#0e0905);text-align:center;box-shadow:0 45px 110px rgba(0,0,0,.9)}
+.loginCard::before{content:'';position:absolute;inset:-2px;border-radius:32px;padding:2px;background:conic-gradient(from var(--a,0deg),transparent 0 280deg,var(--gold) 330deg,var(--or) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:rot 3.5s linear infinite;pointer-events:none}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes rot{to{--a:360deg}}
+.loginCard.shake{animation:shake .5s}
+@keyframes shake{20%,60%{transform:translateX(-11px)}40%,80%{transform:translateX(11px)}}
+.loginLogo{width:95px;height:95px;margin:0 auto 1.2rem;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold3),var(--or));display:flex;align-items:center;justify-content:center;font-size:3rem;box-shadow:0 0 55px rgba(232,182,76,.6),inset 0 0 28px rgba(255,255,255,.3);animation:crownFl 3s ease-in-out infinite}
+.loginCard h2{font-size:2.1rem;color:var(--gold2)}
+.loginCard .mut{color:var(--mut);font-size:.87rem;margin:.3rem 0 1.3rem}
+.passWrap{position:relative}
+.eye{position:absolute;top:50%;inset-inline-end:.75rem;transform:translateY(-30%);background:none;border:0;color:var(--mut);cursor:pointer;font-size:1.2rem}
+#loginErr{margin-top:1rem;min-height:1.2rem;font-size:.87rem}
+#toasts{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);z-index:850;display:flex;flex-direction:column;gap:.6rem;align-items:center}
+.toast{background:linear-gradient(135deg,var(--gold3),var(--gold) 40%,var(--or));color:#241503;font-weight:700;padding:.85rem 1.7rem;border-radius:16px;box-shadow:0 12px 45px rgba(232,182,76,.5);animation:tin .5s cubic-bezier(.2,.9,.3,1.4);font-size:.93rem;border:1px solid rgba(255,255,255,.5);max-width:92vw;text-align:center}
+.toast.out{opacity:0;transform:translateY(14px);transition:.5s}
+@keyframes tin{from{opacity:0;transform:translateY(40px) scale(.7)}}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg)}}
+footer{border-top:1px solid var(--line);padding:2rem;text-align:center;color:var(--mut);font-size:.89rem;background:color-mix(in srgb,var(--bg2) 85%,#000);line-height:2.3;position:relative;z-index:1;margin-bottom:90px}
+footer b{color:var(--gold2)}footer a{color:var(--or2)}
+@media(max-width:760px){.pos{grid-template-columns:1fr}.owner{grid-template-columns:1fr;text-align:center}.chips{justify-content:center}.bigmq span{font-size:2.6rem}.hero{min-height:70vh}}
+</style>
+</head>
+<body>
+<canvas id="emberCv"></canvas>
+<div id="cur"></div><div id="curR"></div>
+<header>
+<div class="logo"><span class="crown">👑</span><span id="logoName">منصة عبدالعاطي</span></div>
+<div class="hright">
+<span class="livepill"><i></i> المطبخ شغال الآن</span>
+<button class="iconb" id="themeBtn" onclick="toggleTheme()">☀️</button>
+</div>
+</header>
+<main>
+<section id="v-home" class="view on">
+<div class="hero rev">
+<div class="herobg"></div>
+<div class="hero-in">
+<div class="kick">منذ ٢٠١٢ · جمر حقيقي · ذهب فاخر</div>
+<h1 id="heroTitle">مطاعم عبدالعاطي</h1>
+<div class="type">✦ <span id="typed"></span><span class="cur2">|</span></div>
+<p class="sub">مشويات على جمر حقيقي، إدارة ذكية، ولوحة تحكم محمية — تجربة ملكية من أول لقمة.</p>
+<div class="cta"><button class="btn" onclick="show('client')">🛒 اطلب الآن</button><button class="btn ghost" onclick="tryAdmin()">🔐 دخول المالك</button></div>
+</div>
+</div>
+<div class="stats" style="max-width:860px;margin:2.5rem auto">
+<div class="stat rev"><b class="num" data-n="14">0</b><span>سنة من الشواء</span></div>
+<div class="stat rev"><b class="num" data-n="4">0</b><span>فروع</span></div>
+<div class="stat rev"><b class="num" data-n="57">0</b><span>صنفًا فاخرًا</span></div>
+<div class="stat rev"><b class="num" data-n="87">0</b><span>ألف عميل سعيد</span></div>
+</div>
+<div class="bigmq rev"><span>عبدالعاطي <b>✦</b> جمر وذهب <b>✦</b> مذاق ملكي <b>✦</b> عبدالعاطي <b>✦</b> جمر وذهب <b>✦</b> مذاق ملكي <b>✦</b> </span><span aria-hidden="true">عبدالعاطي <b>✦</b> جمر وذهب <b>✦</b> مذاق ملكي <b>✦</b> عبدالعاطي <b>✦</b> جمر وذهب <b>✦</b> مذاق ملكي <b>✦</b> </span></div>
+<div class="st rev"><span class="no">٠١</span><h2>ادخل إلى عالمنا</h2><span class="ln"></span></div>
+<div class="cards">
+<div class="card rev" onclick="show('about')"><span class="ic">📖</span><h3>عن المطعم</h3><p>القصة والجاليري</p></div>
+<div class="card rev" onclick="show('client')"><span class="ic">🛒</span><h3>موقع العملاء</h3><p>منيو وسلة وكوبونات</p></div>
+<div class="card rev" onclick="tryAdmin()"><span class="ic">🎛️</span><h3>لوحة التحكم</h3><p>محمية للمالك فقط</p></div>
+<div class="card rev" onclick="show('owner')"><span class="ic">👤</span><h3>ملف المالك</h3><p>Ali Abdulati</p></div>
+<div class="card rev" onclick="show('client');setTimeout(()=>document.getElementById('revBox').scrollIntoView({behavior:'smooth'}),350)"><span class="ic">⭐</span><h3>التقييمات</h3><p>رأيك يهمنا</p></div>
+<div class="card rev" onclick="show('client');setTimeout(()=>document.getElementById('bookBox').scrollIntoView({behavior:'smooth'}),350)"><span class="ic">🪑</span><h3>حجز طاولة</h3><p>ليلتك علينا</p></div>
+</div>
+<div class="st rev"><span class="no">٠٢</span><h2>لماذا نحن؟</h2><span class="ln"></span></div>
+<div class="grid">
+<div class="rev"><span class="e">🔥</span><h4>فحم طبيعي 100%</h4><p>مشوياتنا تُشوى على جمر حقيقي لا يعرف الغاز طريقًا إليه.</p></div>
+<div class="rev"><span class="e">🌅</span><h4>لحوم فجر كل يوم</h4><p>نختار أجود القطع طازجة قبل أن تستيقظ المدينة.</p></div>
+<div class="rev"><span class="e">🕑</span><h4>من 12 ظهرًا حتى 2 فجرًا</h4><p>مطبخنا لا ينام، وعطلاتنا حتى 3 فجرًا.</p></div>
+<div class="rev"><span class="e">🔐</span><h4>إدارة مؤمّنة</h4><p>لوحة تحكم محمية بتسجيل دخول خاص بالمالك فقط.</p></div>
+</div>
+<div class="st rev"><span class="no">٠٣</span><h2>الأكثر طلبًا</h2><span class="ln"></span></div>
+<div class="menu" id="bestGrid"></div>
+<div class="st rev"><span class="no">٠٤</span><h2>عروض هذا الأسبوع</h2><span class="ln"></span></div>
+<div class="menu" id="homeOff"></div>
+<div class="st rev"><span class="no">٠٥</span><h2>ماذا قالوا عنا</h2><span class="ln"></span></div>
+<div class="grid">
+<div class="tst rev"><span class="stars">★★★★★</span><p class="stx">الكفتة هنا حاجة تانية خالص.. ريحتها بتسبقني للباب!</p><div class="who">— أحمد سامي</div></div>
+<div class="tst rev"><span class="stars">★★★★★</span><p class="stx">حجزت عيد ميلاد زوجتي والتنظيم كان عالميًا. شكرًا عبدالعاطي!</p><div class="who">— خالد يوسف</div></div>
+<div class="tst rev"><span class="stars">★★★★★</span><p class="stx">نطلب للشركة كل أسبوع من فرع الشيخ زايد. ثبات في الجودة.</p><div class="who">— شركة النور</div></div>
+</div>
+<div class="st rev"><span class="no">٠٦</span><h2>أسئلة شائعة</h2><span class="ln"></span></div>
+<details class="rev"><summary>هل يوجد توصيل لكل المناطق؟</summary><p>نعم، نوصل لجميع الأحياء المجاورة لفروعنا الأربعة خلال 30 دقيقة أو أقل.</p></details>
+<details class="rev"><summary>هل يمكن حجز قاعة كاملة للمناسبات؟</summary><p>بالتأكيد! تواصل مع المالك مباشرة على 01033797598 وسنجهز لك باقة خاصة.</p></details>
+<details class="rev"><summary>هل تستخدمون كوبونات الخصم؟</summary><p>نعم، أدخل الكود في السلة قبل التأكيد وسيُطبَّق الخصم فورًا — جرّب GOLD20.</p></details>
+<div class="st rev"><span class="no">٠٧</span><h2>ابقَ في دائرة الذهب</h2><span class="ln"></span></div>
+<form class="form rev" onsubmit="return sv(this,'💌 اشتركت! ستصلك عروضنا الذهبية أولًا بأول')">
+<label>بريدك الإلكتروني<input type="email" required placeholder="name@mail.com"></label>
+<button class="btn">🔔 اشترك الآن</button>
+</form>
+</section>
+<section id="v-about" class="view">
+<div class="st rev"><span class="no">٠١</span><h2>حكايتنا</h2><span class="ln"></span></div>
+<div class="story rev"><p>في قلب القاهرة، ومنذ عام 2012، أشعل <b style="color:var(--gold2)">Ali Abdulati</b> أول جمرة فحم في مشوارنا. بدأنا بعربة مشويات صغيرة ووصفة كفتة سرية توارثناها جيلًا عن جيل، واليوم صرنا أربعة فروع و57 صنفًا لا يهدأ فيها الشواء من الظهر حتى ما بعد منتصف الليل. 🤎</p></div>
+<div class="st rev"><span class="no">٠٢</span><h2>محطات ذهبية</h2><span class="ln"></span></div>
+<div class="tl rev">
+<div><b>2012 — الشرارة الأولى</b><p>عربة مشويات واحدة أمام سوق الجملة وحلم كبير.</p></div>
+<div><b>2016 — الفرع الأول</b><p>افتتحنا مطعم وسط البلد بـ 40 مقعدًا وامتلأ من الأسبوع الأول.</p></div>
+<div><b>2021 — التوسع</b><p>فرعان في المعادي والشيخ زايد وفريق يتجاوز 40 فردًا.</p></div>
+<div><b>2026 — المنصة الرقمية</b><p>57 صنفًا، 4 فروع، ونظام ذكي محمي بتسجيل دخول.</p></div>
+</div>
+<div class="st rev"><span class="no">٠٣</span><h2>قيمنا</h2><span class="ln"></span></div>
+<div class="grid">
+<div class="rev"><span class="e">🤝</span><h4>كرم الضيافة</h4><p>الضيف عندنا له حق قبل أن يطلب.</p></div>
+<div class="rev"><span class="e">🌿</span><h4>طزاجة لا تُساوَم</h4><p>مكونات اليوم لا تُرحَّل للغد أبدًا.</p></div>
+<div class="rev"><span class="e">⚖️</span><h4>عدل في السعر</h4><p>جودة فاخرة بسعر يحترم جيب عميلنا.</p></div>
+<div class="rev"><span class="e">🚀</span><h4>تطوير دائم</h4><p>منيو يتجدد ومنصة تتطور كل موسم.</p></div>
+</div>
+<div class="st rev"><span class="no">٠٤</span><h2>جاليري الأكلات</h2><span class="ln"></span></div>
+<div class="gal">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=60" data-e="🥩" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=60" data-e="🍔" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=60" data-e="🍕" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=60" data-e="🍢" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=60" data-e="🥗" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=60" data-e="🍮" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=600&q=60" data-e="🍟" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=60" data-e="☕" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=60" data-e="🥭" onerror="fb(this)" alt="">
+<img class="rev" loading="lazy" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=60" data-e="🏮" onerror="fb(this)" alt="">
+</div>
+</section>
+<section id="v-client" class="view">
+<div class="hero rev" style="min-height:auto;border:0;margin:0"><div class="hero-in" style="padding:2rem 1rem 1rem"><h1 style="font-size:clamp(2.4rem,6vw,4rem)" id="clientTitle">اطلب ذهبًا 🍯</h1><p class="sub">57 صنفًا بين يديك — فلاتر، ابحث، رتّب، واطلب</p></div></div>
+<div class="st rev"><span class="no">٠١</span><h2>المنيو الذهبي</h2><span class="ln"></span></div>
+<div class="rev" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.9rem" id="catChips"></div>
+<div class="rev" style="display:flex;gap:.7rem;flex-wrap:wrap">
+<input id="searchIn" style="flex:1;min-width:200px;margin:0" placeholder="🔍 ابحث عن طبقك المفضل…" oninput="SEARCH=this.value;renderMenu()">
+<select id="sortSel" style="width:auto;margin:0" onchange="SORT=this.value;renderMenu()"><option value="def">الترتيب الافتراضي</option><option value="asc">السعر: من الأقل</option><option value="desc">السعر: من الأعلى</option></select>
+</div>
+<div class="menu" id="menuGrid" style="margin-top:1.3rem"></div>
+<div class="cartbox rev" id="cartBox">
+<h3 class="lz" style="color:var(--gold2);font-size:1.5rem">🛒 سلتك</h3>
+<div id="cartRows"></div>
+<div class="crow" style="border:0;gap:.5rem">
+<input id="custName" style="flex:1;min-width:140px;margin:0" placeholder="اسمك ورقمك (اختياري)">
+<input id="promoIn" style="width:150px;margin:0" placeholder="كوبون؟">
+<button class="btn" style="padding:.5rem 1rem" onclick="applyPromo()">تطبيق</button>
+</div>
+<div class="crow" style="border:0" id="discRow"></div>
+<div class="crow" style="border:0"><span>الإجمالي النهائي</span><b id="cartTot" class="price" style="margin-inline-start:auto">0 ج.م</b></div>
+<button class="btn" style="width:100%;margin-top:.7rem" onclick="checkout()">✅ تأكيد الطلب</button>
+</div>
+<div class="cartbox rev" id="bookBox" style="border-color:var(--or)">
+<h3 class="lz" style="color:var(--or2);font-size:1.5rem">🪑 حجز طاولة</h3>
+<form class="form" onsubmit="return book(this)">
+<label>الاسم<input required placeholder="اسمك الكريم"></label>
+<label>عدد الأفراد<input type="number" min="1" max="30" value="2" required></label>
+<label>التاريخ<input type="date" required></label>
+<label>الوقت<input type="time" required></label>
+<button class="btn">🪑 تأكيد الحجز</button>
+</form>
+</div>
+<div class="cartbox rev" id="revBox" style="border-color:var(--line)">
+<h3 class="lz" style="color:var(--gold2);font-size:1.5rem">⭐ اكتب تقييمك</h3>
+<form class="form" onsubmit="return addRevClient(this)">
+<label>التقييم<select><option value="5">★★★★★ ممتاز</option><option value="4">★★★★ جيد جدًا</option><option value="3">★★★ جيد</option><option value="2">★★ مقبول</option><option value="1">★ سيئ</option></select></label>
+<label>رأيك<textarea rows="2" required placeholder="شاركنا تجربتك…"></textarea></label>
+<button class="btn">⭐ إرسال التقييم</button>
+</form>
+</div>
+</section>
+<section id="v-admin" class="view">
+<div class="adminBar rev">
+<span>👑 مسجّل كـ <b class="price">Ali Abdulati</b> — كل تعديل يُحفظ تلقائيًا 💾</span>
+<button class="btn danger" onclick="logout()">🔒 تسجيل الخروج</button>
+</div>
+<div class="tabs">
+<button class="tab act" data-t="ov" onclick="tab('ov')">📊 نظرة عامة</button>
+<button class="tab" data-t="set" onclick="tab('set')">⚙️ إعدادات</button>
+<button class="tab" data-t="br" onclick="tab('br')">🏠 فروع</button>
+<button class="tab" data-t="mn" onclick="tab('mn')">📜 منيو</button>
+<button class="tab" data-t="ord" onclick="tab('ord')">📦 طلبات</button>
+<button class="tab" data-t="pos" onclick="tab('pos')">💳 POS</button>
+<button class="tab" data-t="res" onclick="tab('res')">🪑 حجوزات</button>
+<button class="tab" data-t="cust" onclick="tab('cust')">👥 عملاء</button>
+<button class="tab" data-t="staff" onclick="tab('staff')">🧑‍🍳 موظفين</button>
+<button class="tab" data-t="inv" onclick="tab('inv')">🏪 مخزون</button>
+<button class="tab" data-t="exp" onclick="tab('exp')">💸 مصاريف</button>
+<button class="tab" data-t="off" onclick="tab('off')">🎁 عروض</button>
+<button class="tab" data-t="rev" onclick="tab('rev')">⭐ تقييمات</button>
+<button class="tab" data-t="rep" onclick="tab('rep')">📈 تقارير</button>
+<button class="tab" data-t="con" onclick="tab('con')">📞 تواصل</button>
+</div>
+<div id="p-ov" class="panel on"><div class="stats" id="ovStats"></div>
+<div class="cartbox rev" style="margin-top:1rem;border-color:var(--line)">👑 المالك: <b class="price">Ali Abdulati</b> — 📞 <b class="price">01033797598</b>
+<a class="btn ghost" style="padding:.3rem .9rem;margin-inline-start:.6rem" target="_blank" href="https://wa.me/201033797598">💬 واتساب</a></div></div>
+<div id="p-set" class="panel">
+<form class="form rev" onsubmit="return saveSet(this)">
+<label>اسم المطعم<input id="setName" required></label>
+<label>العملة<select id="setCur"><option>ج.م</option><option>ر.س</option><option>د.إ</option></select></label>
+<label>مواعيد العمل<input id="setHours"></label>
+<button class="btn">💾 حفظ الإعدادات</button>
+</form>
+<h3 class="lz" style="color:var(--gold2);margin:1.5rem 0 .7rem">🔐 تغيير كلمة المرور</h3>
+<form class="form rev" onsubmit="return chPass(this)">
+<label>كلمة المرور الجديدة<input type="password" required minlength="4"></label>
+<button class="btn ghost">🔑 تحديث كلمة المرور</button>
+</form>
+</div>
+<div id="p-br" class="panel"><div class="stats" id="brGrid"></div>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addBr(this)"><label>اسم الفرع<input required></label><label>العنوان<input required></label><button class="btn">🏠 إضافة الفرع</button></form></div>
+<div id="p-mn" class="panel">
+<table class="rev"><tr><th>الصنف</th><th>الفئة</th><th>السعر</th><th>إجراء</th></tr><tbody id="admMenu"></tbody></table>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addM(this)">
+<label>اسم الصنف<input required></label><label>السعر<input type="number" min="1" required></label>
+<label>الفئة<select id="addCat"></select></label><label>إيموجي<input maxlength="4"></label>
+<label>رابط صورة (اختياري)<input></label><button class="btn">➕ إضافة للمنيو</button></form></div>
+<div id="p-ord" class="panel"><table class="rev"><tr><th>رقم</th><th>العميل</th><th>الأصناف</th><th>الإجمالي</th><th>الحالة</th><th>تغيير</th></tr><tbody id="ordBody"></tbody></table></div>
+<div id="p-pos" class="panel"><div class="pos rev">
+<div><h3 class="lz" style="color:var(--gold2);font-size:1.5rem">الأصناف — اضغط للإضافة</h3><div class="positems" id="posItems"></div></div>
+<div class="cartbox" style="margin:0"><h3 class="lz" style="color:var(--or2);font-size:1.5rem">🧾 التذكرة</h3><div id="posTicket"></div>
+<div class="crow" style="border:0"><span>الإجمالي</span><b id="posTot" class="price" style="margin-inline-start:auto">0 ج.م</b></div>
+<button class="btn" style="width:100%" onclick="posPay()">💳 الدفع وإقفال</button></div></div></div>
+<div id="p-res" class="panel"><table class="rev"><tr><th>الاسم</th><th>الأفراد</th><th>التاريخ</th><th>الوقت</th></tr><tbody id="resBody"></tbody></table>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addRes(this)"><label>اسم العميل<input required></label><label>عدد الأفراد<input type="number" min="1" max="30" required></label><label>التاريخ<input type="date" required></label><label>الوقت<input type="time" required></label><button class="btn">🪑 تسجيل حجز يدوي</button></form></div>
+<div id="p-cust" class="panel"><table class="rev"><tr><th>العميل</th><th>عدد الطلبات</th><th>إجمالي الإنفاق</th><th>إجراء</th></tr><tbody id="custBody"></tbody></table></div>
+<div id="p-staff" class="panel"><div class="stats" id="staffGrid"></div>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addSt(this)"><label>الإيموجي<input maxlength="4" required></label><label>الاسم<input required></label><label>الوظيفة<input required></label><button class="btn">🧑‍🍳 إضافة موظف</button></form></div>
+<div id="p-inv" class="panel"><table class="rev"><tr><th>الصنف الخام</th><th>الكمية</th><th>الوحدة</th><th>الحالة</th><th>تحكم</th></tr><tbody id="invBody"></tbody></table>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addInv(this)"><label>اسم الصنف الخام<input required></label><label>الكمية<input type="number" min="0" required></label><label>الوحدة<input required></label><button class="btn">🏪 إضافة للمخزون</button></form></div>
+<div id="p-exp" class="panel"><div class="stat rev" style="max-width:280px;margin-bottom:1rem"><b id="expTot">0</b><span>إجمالي مصاريف الشهر (ج.م)</span></div>
+<table class="rev"><tr><th>البند</th><th>المبلغ</th><th>الشهر</th></tr><tbody id="expBody"></tbody></table>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addExp(this)"><label>البند<input required></label><label>المبلغ<input type="number" min="1" required></label><label>الشهر<input type="month" required></label><button class="btn">💸 تسجيل المصروف</button></form></div>
+<div id="p-off" class="panel"><div class="menu" id="offGrid"></div>
+<form class="form rev" style="margin-top:1rem" onsubmit="return addOff(this)"><label>اسم العرض<input required></label><label>نسبة الخصم ٪<input type="number" min="0" max="100" required></label><label>كود الكوبون<input required></label><button class="btn">🎁 إطلاق العرض</button></form></div>
+<div id="p-rev" class="panel"><div id="revList"></div></div>
+<div id="p-rep" class="panel"><h3 class="lz" style="color:var(--gold2)">أداء الفروع</h3>
+<div class="brow rev"><div class="lbl"><span>الفرع الرئيسي</span><span>86%</span></div><div class="bar"><b data-w="86%"></b></div></div>
+<div class="brow rev"><div class="lbl"><span>فرع المعادي</span><span>64%</span></div><div class="bar"><b data-w="64%"></b></div></div>
+<div class="brow rev"><div class="lbl"><span>فرع الشيخ زايد</span><span>73%</span></div><div class="bar"><b data-w="73%"></b></div></div>
+<div class="brow rev"><div class="lbl"><span>فرع المنصورة</span><span>51%</span></div><div class="bar"><b data-w="51%"></b></div></div>
+<h3 class="lz" style="color:var(--gold2);margin-top:1.3rem">حالات الطلبات (مباشرة)</h3><div id="dynBars"></div></div>
+<div id="p-con" class="panel"><div class="owner rev" style="grid-template-columns:1fr;text-align:center">
+<div><h3 class="lz" style="font-size:1.8rem;color:var(--gold2)">تواصل مع المالك مباشرة</h3>
+<p style="color:var(--mut)">Ali Abdulati — علي عبدالعاطي</p>
+<p style="margin-top:.5rem">📞 <b class="price">01033797598</b></p>
+<div class="chips" style="justify-content:center"><a class="btn" href="tel:01033797598">📞 اتصال</a><a class="btn ghost" target="_blank" href="https://wa.me/201033797598">💬 واتساب</a></div></div></div>
+<form class="form rev" style="margin-top:1rem" onsubmit="return sv(this,'📨 وصلت رسالتك وسيرد عليك المالك قريبًا')"><label>رسالتك<textarea rows="4" required></textarea></label><button class="btn">📨 إرسال</button></form></div>
+</section>
+<section id="v-owner" class="view">
+<div class="st rev"><span class="no">٠١</span><h2>ملف المالك</h2><span class="ln"></span></div>
+<div class="owner rev">
+<div>
+<img class="avatar" src="owner.jpg" alt="Ali Abdulati" onerror="this.style.display='none';document.getElementById('ownFb').style.display='flex'">
+<div class="avatar-fb" id="ownFb">A</div>
+</div>
+<div>
+<h3 class="lz" style="font-size:2.4rem;color:var(--gold2)">Ali Abdulati</h3>
+<p style="color:var(--mut)">علي عبدالعاطي — مؤسس ومالك منصة المطاعم الذهبية</p>
+<p style="margin-top:.6rem">📞 <b class="price">01033797598</b></p>
+<div class="chips">
+<a class="btn" href="tel:01033797598">📞 اتصال مباشر</a>
+<a class="btn ghost" target="_blank" href="https://wa.me/201033797598">💬 واتساب</a>
+</div>
+</div>
+</div>
+<div class="stats" style="margin-top:1.5rem">
+<div class="stat rev"><b>4</b><span>فروع</span></div>
+<div class="stat rev"><b>14</b><span>سنة خبرة</span></div>
+<div class="stat rev"><b>57</b><span>صنفًا فاخرًا</span></div>
+<div class="stat rev"><b>∞</b><span>شغف</span></div>
+</div>
+</section>
+</main>
+<footer>
+✦ منصة مطاعم <b>Ali Abdulati</b> ✦ 📞 <b>01033797598</b> ✦ <a target="_blank" href="https://wa.me/201033797598">واتساب</a> · <a href="tel:01033797598">اتصال</a><br>
+<b>جميع الحقوق محفوظة © 2026 Ali Abdulati</b>
+</footer>
+<nav class="dock">
+<button class="dk act" data-v="home" onclick="show('home')"><span class="em">🏠</span><span class="lb">الرئيسية</span></button>
+<button class="dk" data-v="about" onclick="show('about')"><span class="em">📖</span><span class="lb">عن المطعم</span></button>
+<button class="dk" data-v="client" onclick="show('client')"><span class="em">🛒</span><span class="lb">العملاء</span></button>
+<button class="dk" onclick="tryAdmin()"><span class="em">🔐</span><span class="lb">التحكم</span></button>
+<button class="dk" data-v="owner" onclick="show('owner')"><span class="em">👤</span><span class="lb">المالك</span></button>
+</nav>
+<div id="loginOverlay">
+<div class="loginCard" id="loginCard">
+<div class="loginLogo">👑</div>
+<h2 class="lz">دخول المالك</h2>
+<p class="mut">منطقة محمية — <b style="color:var(--gold2)">Ali Abdulati</b> فقط</p>
+<input id="loginUser" placeholder="اسم المستخدم" autocomplete="username">
+<div class="passWrap">
+<input id="loginPass" type="password" placeholder="كلمة المرور" autocomplete="current-password">
+<button class="eye" onclick="togglePass()" type="button">👁</button>
+</div>
+<button class="btn" style="width:100%;margin-top:1rem" onclick="doLogin()">🔓 دخول اللوحة</button>
+<p id="loginErr" class="low"></p>
+<p class="mut" style="font-size:.72rem;margin-top:.5rem">افتراضي: ali / gold2026 — غيّرها من الإعدادات</p>
+</div>
+</div>
+<div id="toasts"></div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],U='https://images.unsplash.com/';
+const PIMG='https://image.qwenlm.ai/public_source/6f9bac46-266b-4d5f-ba3f-42b62bc83b67/';
+const CATS=['الكل','مشويات','برجر','بيتزا','ساندويتشات','أطباق الشيف','شوربات','مقبلات','سلطات','حلويات','مشروبات ساخنة','مشروبات باردة'];
+const KEY='goldresto_v2',KEYP='goldresto_pass';
+/* ═══ الجمرات الحية ═══ */
+const cv=$('#emberCv'),cx=cv.getContext('2d');let W,H;
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
+const embers=[];const newEmb=()=>({x:Math.random()*W,y:H+Math.random()*120,r:Math.random()*2.4+1,vy:-(Math.random()*.9+.35),sw:Math.random()*1.6,ph:Math.random()*6.28,o:Math.random()*.5+.15,c:Math.random()>.5?'255,122,28':'232,182,76'});
+for(let i=0;i<45;i++)embers.push(newEmb());
+(function tick(){cx.clearRect(0,0,W,H);embers.forEach(e=>{e.y+=e.vy;e.ph+=.025;e.x+=Math.sin(e.ph)*e.sw*.35;if(e.y<-25)Object.assign(e,newEmb(),{y:H+25});const g=cx.createRadialGradient(e.x,e.y,0,e.x,e.y,e.r*4);g.addColorStop(0,`rgba(${e.c},${e.o})`);g.addColorStop(1,`rgba(${e.c},0)`);cx.fillStyle=g;cx.beginPath();cx.arc(e.x,e.y,e.r*4,0,6.28);cx.fill();});requestAnimationFrame(tick)})();
+/* ═══ المؤشر المخصص ═══ */
+let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;$('#cur').style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`});
+(function cl(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;$('#curR').style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(cl)})();
+document.addEventListener('mouseover',e=>{$('#curR').classList.toggle('big',!!e.target.closest('button,a,.card,.dish,input,select,summary,.gal img'))});
+/* ═══ الأزرار المغناطيسية ═══ */
+document.addEventListener('mousemove',e=>{const b=e.target.closest('.btn');if(!b)return;const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.18}px,${(e.clientY-r.top-r.height/2)*.28}px)`;});
+document.addEventListener('mouseout',e=>{const b=e.target.closest('.btn');if(b)b.style.transform='';});
+/* ═══ عنوان الهيرو حرف حرف ═══ */
+function splitHero(el){if(!el)return;const t=el.textContent;el.textContent='';[...t].forEach((ch,i)=>{const s=document.createElement('span');s.textContent=ch==' '?'\u00A0':ch;s.style.animationDelay=(i*.05)+'s';el.appendChild(s);});}
+splitHero($('#heroTitle'));
+/* ═══ الميلان 3D + الضوء ═══ */
+document.addEventListener('mousemove',e=>{const c=e.target.closest('.card');if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.transform=`translateY(-8px) rotateY(${(x-.5)*14}deg) rotateX(${(.5-y)*14}deg)`;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%');});
+document.addEventListener('mouseout',e=>{const c=e.target.closest('.card');if(c)c.style.transform='';});
+/* ═══ المصادقة ═══ */
+let logged=localStorage.getItem('ownerLogged')=='1';
+function getPass(){return localStorage.getItem(KEYP)||'gold2026';}
+function tryAdmin(){if(logged){show('admin');}else{$('#loginOverlay').classList.add('show');setTimeout(()=>$('#loginUser').focus(),200);}}
+function togglePass(){const p=$('#loginPass');p.type=p.type=='password'?'text':'password';}
+function doLogin(){const u=$('#loginUser').value.trim().toLowerCase(),p=$('#loginPass').value;
+if(u==='ali'&&p===getPass()){logged=true;localStorage.setItem('ownerLogged','1');$('#loginOverlay').classList.remove('show');$('#loginErr').textContent='';toast('👑 أهلًا بعودتك يا علي');show('admin');}
+else{$('#loginErr').textContent='❌ بيانات غير صحيحة!';const c=$('#loginCard');c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake');}}
+$('#loginPass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+function logout(){logged=false;localStorage.removeItem('ownerLogged');show('home');toast('🔒 تم تسجيل الخروج بأمان');}
+function chPass(f){localStorage.setItem(KEYP,f[0].value);toast('🔑 تم تغيير كلمة المرور');f.reset();return false;}
+const seed={theme:'',set:{name:'منصة عبدالعاطي',cur:'ج.م',hours:'12:00 م — 2:00 ص'},promo:null,cart:{},pos:{},
+menu:[
+{n:'ريب آي ستيك',p:320,e:'🥩',c:'مشويات',img:'photo-1544025162-d76694265947'},
+{n:'كفتة مشوية',p:180,e:'🍢',c:'مشويات',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff9873.png'},
+{n:'شيش طاووق',p:165,e:'🍗',c:'مشويات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff8906.png'},
+{n:'كباب حلبي',p:190,e:'🍖',c:'مشويات',img:PIMG+'4c2ee2c95-c2ba-464f-abbe-665c396c73ff9057.png'},
+{n:'مشويات مشكلة ملكية',p:420,e:'🔥',c:'مشويات',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff5227.png'},
+{n:'ريش ضاني',p:380,e:'🍖',c:'مشويات',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff7816.png'},
+{n:'حمام محشي',p:260,e:'🕊️',c:'مشويات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff3137.png'},
+{n:'سجق اسكندراني',p:120,e:'🌭',c:'مشويات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff9422.png'},
+{n:'برجر أنجوس ذهبي',p:140,e:'🍔',c:'برجر',img:'photo-1568901346375-23c9450c58cd'},
+{n:'تشيكن كرسبي',p:120,e:'🍗',c:'برجر',img:'photo-1571091718767-18b5b1457add'},
+{n:'دبل سماش',p:190,e:'🍔',c:'برجر',img:'photo-1550547660-d9450f859349'},
+{n:'برجر المشروم',p:150,e:'🍄',c:'برجر',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff6503.png'},
+{n:'برجر الديناميت',p:175,e:'🌶️',c:'برجر',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff8723.png'},
+{n:'بيتزا ترافل',p:160,e:'🍕',c:'بيتزا',img:'photo-1565299624946-b28f40a0ae38'},
+{n:'مارجريتا',p:120,e:'🍕',c:'بيتزا',img:'photo-1574071318508-1cdbab80d002'},
+{n:'بيتزا الجمبري',p:185,e:'🦐',c:'بيتزا',img:'photo-1513104890138-7c749659a591'},
+{n:'باربكيو دجاج',p:155,e:'🍗',c:'بيتزا',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff4504.png'},
+{n:'بيتزا خضار مشوية',p:110,e:'🥦',c:'بيتزا',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff6435.png'},
+{n:'شاورما لحم',p:95,e:'🌯',c:'ساندويتشات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff9621.png'},
+{n:'شاورما فراخ',p:85,e:'🌯',c:'ساندويتشات',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff9007.png'},
+{n:'حواوشي بلدي',p:90,e:'🥙',c:'ساندويتشات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff1177.png'},
+{n:'كلوب ساندويتش',p:105,e:'🥪',c:'ساندويتشات',img:'photo-1550317138-10000687a72b'},
+{n:'كبسة لحم',p:240,e:'🍚',c:'أطباق الشيف',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff2626.png'},
+{n:'أرز بحري بالجمبري',p:290,e:'🦞',c:'أطباق الشيف',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff7650.png'},
+{n:'ملوخية بالفراخ',p:170,e:'🍲',c:'أطباق الشيف',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff2695.png'},
+{n:'فتة كوارع',p:210,e:'🍖',c:'أطباق الشيف',img:PIMG+'4c2ee2c95-c2ba-464f-abbe-665c396c73ff1008.png'},
+{n:'سمك مشوي كامل',p:310,e:'🐟',c:'أطباق الشيف',img:PIMG+'4c2ee2c95-c2ba-464f-abbe-665c396c73ff5811.png'},
+{n:'شوربة عدس',p:55,e:'🥣',c:'شوربات',img:'photo-1547592166-23ac45744acd'},
+{n:'شوربة فراخ',p:60,e:'🍜',c:'شوربات',img:PIMG+'5c2ee2c95-c2ba-464f-abbe-665c396c73ff2254.png'},
+{n:'شوربة سي فود',p:95,e:'🦐',c:'شوربات',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff9997.png'},
+{n:'حمص بالطحينة',p:55,e:'🫘',c:'مقبلات',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff8020.png'},
+{n:'بابا غنوج',p:55,e:'🍆',c:'مقبلات',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff4795.png'},
+{n:'بطاطس ذهبية',p:45,e:'🍟',c:'مقبلات',img:'photo-1541592106381-b31e9677c0e5'},
+{n:'سمبوسة باللحم',p:65,e:'🥟',c:'مقبلات',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff5873.png'},
+{n:'أصابع موتزاريلا',p:75,e:'🧀',c:'مقبلات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff6920.png'},
+{n:'سيزر دجاج',p:95,e:'🥗',c:'سلطات',img:'photo-1546069901-ba9599a7e63c'},
+{n:'سلطة يونانية',p:85,e:'🥒',c:'سلطات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff7903.png'},
+{n:'فتوش',p:65,e:'🍅',c:'سلطات',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff6206.png'},
+{n:'تبولة',p:55,e:'🌿',c:'سلطات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff8666.png'},
+{n:'كنافة نابلسية',p:85,e:'🍮',c:'حلويات',img:'photo-1551024506-0bccd828d307'},
+{n:'أم علي الملكية',p:70,e:'🥧',c:'حلويات',img:'photo-1488477181946-6428a0291777'},
+{n:'بسبوسة بالقشطة',p:60,e:'🍯',c:'حلويات',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff3504.png'},
+{n:'بقلاوة مشكلة',p:95,e:'🍬',c:'حلويات',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff8718.png'},
+{n:'تشيز كيك',p:90,e:'🍰',c:'حلويات',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff5821.png'},
+{n:'أرز باللبن',p:45,e:'🍚',c:'حلويات',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff2520.png'},
+{n:'كراميل كريم',p:65,e:'🍮',c:'حلويات',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff9542.png'},
+{n:'قهوة تركي',p:40,e:'☕',c:'مشروبات ساخنة',img:'photo-1509042239860-f550ce710b93'},
+{n:'كابتشينو',p:60,e:'☕',c:'مشروبات ساخنة',img:'photo-1461023058943-07fcbe16d735'},
+{n:'شاي كشري',p:25,e:'🫖',c:'مشروبات ساخنة',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff7552.png'},
+{n:'سحلب بالمكسرات',p:55,e:'🥛',c:'مشروبات ساخنة',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff4481.png'},
+{n:'هوت شوكلت',p:65,e:'🍫',c:'مشروبات ساخنة',img:PIMG+'3c2ee2c95-c2ba-464f-abbe-665c396c73ff1631.png'},
+{n:'عصير مانجو',p:60,e:'🥭',c:'مشروبات باردة',img:'photo-1546173159-315724a31696'},
+{n:'ليمون نعناع',p:40,e:'🍋',c:'مشروبات باردة',img:PIMG+'0c2ee2c95-c2ba-464f-abbe-665c396c73ff1103.png'},
+{n:'موهيتو ذهبي',p:55,e:'🍹',c:'مشروبات باردة',img:PIMG+'1c2ee2c95-c2ba-464f-abbe-665c396c73ff1269.png'},
+{n:'آيس كوفي',p:70,e:'🧋',c:'مشروبات باردة',img:PIMG+'5c2ee2c95-c2ba-464f-abbe-665c396c73ff5057.png'},
+{n:'ميلك شيك أوريو',p:80,e:'🥤',c:'مشروبات باردة',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff2760.png'},
+{n:'سموذي فراولة',p:75,e:'🍓',c:'مشروبات باردة',img:PIMG+'2c2ee2c95-c2ba-464f-abbe-665c396c73ff6167.png'}],
+orders:[{id:1027,n:'أحمد سامي',items:'ريب آي ستيك ×2 ، سيزر دجاج',tot:735,st:'جديد'},{id:1026,n:'منى خالد',items:'بيتزا ترافل ×1',tot:160,st:'قيد التحضير'},{id:1025,n:'طارق علي',items:'برجر أنجوس ×3 ، عصير مانجو',tot:480,st:'مدفوع'}],
+res:[{n:'سارة م.',c:4,d:'2026-08-15',t:'20:00'},{n:'خالد يوسف',c:2,d:'2026-08-15',t:'21:30'},{n:'شركة النور',c:12,d:'2026-08-16',t:'13:00'}],
+br:[['الفرع الرئيسي','وسط البلد — 12 شارع الذهب'],['فرع المعادي','كورنيش النيل'],['فرع الشيخ زايد','أركان بلازا'],['فرع المنصورة','شارع الجامعة']],
+staff:[['👨‍🍳','الشيف رمضان','رئيس الطهاة'],['🧑‍💼','محمد أشرف','مدير الفرع الرئيسي'],['💁‍♀️','نورهان سمير','خدمة عملاء'],['🛵','كريم فتحي','قائد التوصيل']],
+inv:[{n:'لحمة بلدي',q:35,u:'كجم'},{n:'دجاج',q:60,u:'كجم'},{n:'جمبري',q:12,u:'كجم'},{n:'أرز',q:80,u:'كجم'},{n:'زيت',q:40,u:'لتر'},{n:'دقيق',q:50,u:'كجم'},{n:'جبنة موتزاريلا',q:8,u:'كجم'},{n:'بن',q:4,u:'كجم'}],
+exp:[{n:'إيجار الفرع الرئيسي',a:12000,d:'2026-08'},{n:'مرتبات',a:48000,d:'2026-08'},{n:'كهرباء وغاز',a:6400,d:'2026-08'},{n:'توريد لحوم',a:22000,d:'2026-08'}],
+off:[{t:'خصم الافتتاح الرقمي',pct:20,code:'GOLD20'},{t:'حلوى هدية مع كل طلب فوق 400 ج',pct:0,code:'SWEET'},{t:'توصيل مجاني يوم الجمعة',pct:0,code:'FREE'}],
+cust:[['أحمد سامي',24,'8,650'],['منى خالد',12,'3,240'],['طارق علي',31,'11,900'],['شركة النور',5,'15,400']],
+revs:[{s:5,txt:'الكنافة تحفة والتوصيل وصل قبل الموعد!',who:'منى خالد'},{s:5,txt:'أفضل كفتة في مصر بجد.',who:'أحمد سامي'},{s:4,txt:'طلبيات الجملة ممتازة، نتمنى خصم أكبر للشركات.',who:'شركة النور'}]};
+let S=JSON.parse(localStorage.getItem(KEY)||'null')||seed;
+const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
+let CAT='الكل',SEARCH='',SORT='def',oid=1000+Math.max(0,...S.orders.map(o=>o.id));
+const src=m=>m.img?(m.img.startsWith('http')?m.img:U+m.img+'?w=500&q=60'):'';
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent='✦ '+m;$('#toasts').appendChild(t);setTimeout(()=>t.classList.add('out'),2600);setTimeout(()=>t.remove(),3200);}
+function fb(im){const d=document.createElement('div');d.className='etile';d.textContent=im.dataset.e||'🍽️';im.replaceWith(d);}
+function reveal(r){r.querySelectorAll('.rev').forEach((e,i)=>{e.classList.remove('in');setTimeout(()=>e.classList.add('in'),60*i+40);});}
+function show(v){if(v=='admin'&&!logged)return tryAdmin();$$('.view').forEach(s=>s.classList.remove('on'));$('#v-'+v).classList.add('on');$$('.dk[data-v]').forEach(b=>b.classList.toggle('act',b.dataset.v==v));reveal($('#v-'+v));nums($('#v-'+v));if(v=='admin'){renderOv();bars();}window.scrollTo({top:0,behavior:'smooth'});}
+function tab(t){$$('.tab').forEach(x=>x.classList.toggle('act',x.dataset.t==t));$$('.panel').forEach(p=>p.classList.toggle('on',p.id=='p-'+t));if(t=='rep'){bars();renderDynBars();}if(t=='ov'){renderOv();nums($('#p-ov'));}}
+function bars(){$$('#p-rep .bar b').forEach(b=>{b.style.width='0';setTimeout(()=>b.style.width=b.dataset.w,120);});}
+function nums(r){r.querySelectorAll('.num').forEach(el=>{const t=+el.dataset.n,st=performance.now();const f=n=>{const p=Math.min((n-st)/1000,1);el.textContent=Math.round(t*p).toLocaleString('en-US');if(p<1)requestAnimationFrame(f);};requestAnimationFrame(f);});}
+function sv(f,m){toast(m);return false;}
+function toggleTheme(){document.body.classList.toggle('light');S.theme=document.body.classList.contains('light')?'light':'';$('#themeBtn').textContent=S.theme?'🌙':'☀️';save();toast(S.theme?'✨ وضع النهار الذهبي':'🌙 الوضع الليلي الفاخر');}
+function confetti(){const c=['#e8b64c','#ff7a1c','#f7d98b','#fff','#ff9a3c'];for(let i=0;i<60;i++){const s=document.createElement('i');s.style.cssText=`position:fixed;top:-14px;left:${Math.random()*100}vw;width:${6+Math.random()*9}px;height:${6+Math.random()*9}px;background:${c[i%5]};border-radius:${Math.random()>.5?'50%':'2px'};z-index:880;pointer-events:none;animation:fall ${2+Math.random()*2.4}s linear forwards`;document.body.appendChild(s);setTimeout(()=>s.remove(),4800);}}
+function dishHTML(m,i){const s=src(m);return `<div class="dish rev in">${s?`<div class="imw"><img loading="lazy" src="${s}" data-e="${m.e}" onerror="fb(this)" alt="${m.n}"></div>`:`<div class="etile">${m.e}</div>`}<div class="bd"><span class="cat">${m.c}</span><h4>${m.e} ${m.n}</h4><div style="display:flex;justify-content:space-between;align-items:center;margin-top:.45rem"><span class="price">${m.p} ${S.set.cur}</span><button class="btn" style="padding:.4rem .95rem" onclick="addC(${i})">+ سلة</button></div></div></div>`;}
+function renderCats(){$('#catChips').innerHTML=CATS.map(c=>`<button class="chip ${c==CAT?'act':''}" onclick="CAT='${c}';renderCats();renderMenu()">${c}</button>`).join('');}
+function renderMenu(){let list=S.menu.map((m,i)=>({...m,i})).filter(m=>(CAT=='الكل'||m.c==CAT)&&m.n.includes(SEARCH));if(SORT=='asc')list.sort((a,b)=>a.p-b.p);if(SORT=='desc')list.sort((a,b)=>b.p-a.p);$('#menuGrid').innerHTML=list.length?list.map(m=>dishHTML(m,m.i)).join(''):'<p style="color:var(--mut)">لا توجد نتائج مطابقة 🤔</p>';}
+function renderBest(){const hot=[0,8,13,39];$('#bestGrid').innerHTML=hot.filter(i=>S.menu[i]).map(i=>dishHTML(S.menu[i],i)).join('');}
+function renderAdmMenu(){$('#admMenu').innerHTML=S.menu.map((m,i)=>`<tr><td>${m.e} ${m.n}</td><td>${m.c}</td><td>${m.p} ${S.set.cur}</td><td><button class="btn ghost" style="padding:.25rem .8rem" onclick="delM(${i})">🗑️</button></td></tr>`).join('');}
+function addM(f){S.menu.push({n:f[0].value,p:+f[1].value,c:f[2].value,e:f[3].value||'🍽️',img:f[4].value});save();renderMenu();renderAdmMenu();renderPos();renderBest();toast('➕ أُضيف «'+f[0].value+'» للمنيو');f.reset();return false;}
+function delM(i){toast('🗑️ حُذف «'+S.menu[i].n+'»');S.menu.splice(i,1);save();S.cart={};S.pos={};renderMenu();renderAdmMenu();renderPos();renderBest();renderCart();}
+function totC(){const b=Object.keys(S.cart).reduce((s,i)=>s+S.cart[i]*S.menu[i].p,0);return Math.round(b*(1-((S.promo&&S.promo.pct)||0)/100));}
+function baseC(){return Object.keys(S.cart).reduce((s,i)=>s+S.cart[i]*S.menu[i].p,0);}
+function addC(i){S.cart[i]=(S.cart[i]||0)+1;save();renderCart();toast('🛒 أُضيف «'+S.menu[i].n+'» للسلة');}
+function chq(i,d){S.cart[i]=(S.cart[i]||0)+d;if(S.cart[i]<=0)delete S.cart[i];save();renderCart();}
+function renderCart(){const k=Object.keys(S.cart);$('#cartRows').innerHTML=k.length?k.map(i=>`<div class="crow"><span>${S.menu[i].e} ${S.menu[i].n}</span><div class="qty" style="margin-inline-start:auto"><button onclick="chq(${i},-1)">−</button><b>${S.cart[i]}</b><button onclick="chq(${i},1)">+</button></div><span class="price">${S.cart[i]*S.menu[i].p} ${S.set.cur}</span></div>`).join(''):'<p style="color:var(--mut);padding:.6rem 0">سلتك فارغة… أضف شيئًا لذيذًا 😋</p>';$('#discRow').innerHTML=S.promo?`<span style="color:#7ee081">🎁 كوبون ${S.promo.code} مفعّل (−${S.promo.pct}٪)</span><button class="btn ghost" style="padding:.2rem .7rem" onclick="S.promo=null;save();renderCart()">إلغاء</button>`:'';$('#cartTot').textContent=totC()+' '+S.set.cur;}
+function applyPromo(){const code=$('#promoIn').value.trim().toUpperCase();const o=S.off.find(x=>x.code.toUpperCase()==code);if(o){S.promo={code:o.code,pct:o.pct};save();renderCart();toast(o.pct?`🎁 تم تطبيق خصم ${o.pct}٪!`:'🎁 الكوبون مفعّل — هديتك مع الطلب!');}else toast('⚠️ كود غير موجود');}
+function checkout(){if(!baseC())return toast('⚠️ السلة فارغة!');const amt=totC(),name=$('#custName').value.trim();toast('✅ تم تأكيد طلبك بمبلغ '+amt+' '+S.set.cur);confetti();S.orders.unshift({id:++oid,n:name||'عميل أونلاين',items:Object.keys(S.cart).map(i=>S.menu[i].n+'×'+S.cart[i]).join('، '),tot:amt,st:'جديد'});if(name){const ex=S.cust.find(c=>c[0]==name);if(ex){ex[1]++;ex[2]=Number(ex[2].replace(/,/g,''))+amt+'';}else S.cust.push([name,1,String(amt)]);renderCust();}S.cart={};S.promo=null;save();renderOrders();renderCart();$('#custName').value='';$('#promoIn').value='';}
+function totP(){return Object.keys(S.pos).reduce((s,i)=>s+S.pos[i]*S.menu[i].p,0);}
+function posAdd(i){S.pos[i]=(S.pos[i]||0)+1;save();renderPos();}
+function posChq(i,d){S.pos[i]=(S.pos[i]||0)+d;if(S.pos[i]<=0)delete S.pos[i];save();renderPos();}
+function renderPos(){$('#posItems').innerHTML=S.menu.map((m,i)=>`<div class="pitem" onclick="posAdd(${i})"><span class="e">${m.e}</span>${m.n}<b class="price" style="display:block">${m.p}</b></div>`).join('');$('#posTicket').innerHTML=Object.keys(S.pos).length?Object.keys(S.pos).map(i=>`<div class="crow"><span>${S.menu[i].e} ${S.menu[i].n} ×${S.pos[i]}</span><div class="qty" style="margin-inline-start:auto"><button onclick="posChq(${i},-1)">−</button><button onclick="posChq(${i},1)">+</button></div><span class="price">${S.pos[i]*S.menu[i].p}</span></div>`).join(''):'<p style="color:var(--mut)">اضغط الأصناف لإضافتها…</p>';$('#posTot').textContent=totP()+' '+S.set.cur;}
+function posPay(){if(!totP())return toast('⚠️ لا يوجد طلب مفتوح!');toast('💳 تم الدفع — '+totP()+' '+S.set.cur);confetti();S.orders.unshift({id:++oid,n:'POS كاشير',items:Object.keys(S.pos).map(i=>S.menu[i].n+'×'+S.pos[i]).join('، '),tot:totP(),st:'مدفوع'});S.pos={};save();renderOrders();renderPos();}
+function renderOrders(){$('#ordBody').innerHTML=S.orders.map((o,i)=>`<tr><td>#${o.id}</td><td>${o.n}</td><td>${o.items}</td><td class="price">${o.tot}</td><td>${o.st}</td><td><button class="btn" style="padding:.25rem .7rem" onclick="setSt(${i})">⟳</button></td></tr>`).join('');}
+const STS=['جديد','قيد التحضير','جاهز','مدفوع'];
+function setSt(i){S.orders[i].st=STS[(STS.indexOf(S.orders[i].st)+1)%STS.length];save();renderOrders();toast('📦 طلب #'+S.orders[i].id+' → '+S.orders[i].st);}
+function renderRes(){$('#resBody').innerHTML=S.res.map(r=>`<tr><td>${r.n}</td><td>${r.c}</td><td>${r.d}</td><td>${r.t}</td></tr>`).join('');}
+function book(f){S.res.unshift({n:f[0].value,c:+f[1].value,d:f[2].value,t:f[3].value});save();renderRes();toast('🪑 تم حجز طاولتك يا '+f[0].value+' — نتشرف بك!');confetti();f.reset();return false;}
+function addRes(f){S.res.unshift({n:f[0].value,c:+f[1].value,d:f[2].value,t:f[3].value});save();renderRes();toast('🪑 سُجّل حجز يدوي');f.reset();return false;}
+function renderBr(){$('#brGrid').innerHTML=S.br.map(b=>`<div class="stat rev in"><b style="font-size:1.15rem;color:var(--gold2)">🏠 ${b[0]}</b><span>${b[1]}</span></div>`).join('');}
+function addBr(f){S.br.push([f[0].value,f[1].value]);save();renderBr();toast('🏠 أُضيف فرع جديد');f.reset();return false;}
+function renderStaff(){$('#staffGrid').innerHTML=S.staff.map(s=>`<div class="stat rev in"><b>${s[0]}</b><span style="color:var(--gold2);font-weight:700">${s[1]}</span><br><span>${s[2]}</span></div>`).join('');}
+function addSt(f){S.staff.push([f[0].value,f[1].value,f[2].value]);save();renderStaff();toast('🧑‍🍳 انضم '+f[1].value+' للفريق!');f.reset();return false;}
+function renderInv(){$('#invBody').innerHTML=S.inv.map((v,i)=>`<tr><td>${v.n}</td><td class="${v.q<=5?'low':''}">${v.q}</td><td>${v.u}</td><td>${v.q<=5?'<span class="low">⚠️ منخفض</span>':'✅ سليم'}</td><td><button class="btn ghost" style="padding:.2rem .6rem" onclick="invCh(${i},-1)">−</button> <button class="btn ghost" style="padding:.2rem .6rem" onclick="invCh(${i},1)">+</button></td></tr>`).join('');}
+function invCh(i,d){S.inv[i].q=Math.max(0,S.inv[i].q+d);save();renderInv();if(S.inv[i].q<=5&&d<0)toast('⚠️ مخزون «'+S.inv[i].n+'» منخفض!');}
+function addInv(f){S.inv.push({n:f[0].value,q:+f[1].value,u:f[2].value});save();renderInv();toast('🏪 أُضيف للمخزون');f.reset();return false;}
+function renderExp(){const t=S.exp.reduce((s,e)=>s+e.a,0);$('#expTot').textContent=t.toLocaleString('en-US');$('#expBody').innerHTML=S.exp.map(e=>`<tr><td>${e.n}</td><td class="price">${e.a.toLocaleString('en-US')}</td><td>${e.d}</td></tr>`).join('');}
+function addExp(f){S.exp.push({n:f[0].value,a:+f[1].value,d:f[2].value});save();renderExp();toast('💸 سُجّل المصروف');f.reset();return false;}
+function offHTML(o){return `<div class="dish rev in"><div class="bd" style="text-align:center;padding:1.5rem"><h4>🎁 ${o.t}</h4>${o.pct?`<p class="price" style="font-size:1.7rem;margin:.5rem 0">${o.pct}٪ خصم</p>`:'<p style="color:var(--mut);margin:.5rem 0">هدية / ميزة خاصة</p>'}<span class="price" style="background:rgba(232,182,76,.1);border:1px dashed var(--gold);border-radius:10px;padding:.35rem .95rem;display:inline-block;margin-top:.4rem">${o.code}</span></div></div>`;}
+function renderOff(){$('#offGrid').innerHTML=S.off.map(offHTML).join('');$('#homeOff').innerHTML=S.off.slice(0,3).map(offHTML).join('');}
+function addOff(f){S.off.unshift({t:f[0].value,pct:+f[1].value,code:f[2].value.toUpperCase()});save();renderOff();confetti();toast('🎁 انطلق العرض بكود '+f[2].value.toUpperCase());f.reset();return false;}
+function renderCust(){$('#custBody').innerHTML=S.cust.map(c=>`<tr><td>${c[0]}</td><td>${c[1]}</td><td class="price">${c[2]} ${S.set.cur}</td><td><button class="btn" style="padding:.25rem .8rem" onclick="toast('🎁 أُرسل عرض خاص لـ ${c[0]}')">🎁 إرسال عرض</button></td></tr>`).join('');}
+function renderRevs(){$('#revList').innerHTML=S.revs.map(r=>`<div style="background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem;margin-bottom:.8rem"><span class="stars">${'★'.repeat(r.s)}${'☆'.repeat(5-r.s)}</span><br><b>${r.who}:</b> <span style="color:var(--mut)">"${r.txt}"</span> <button class="btn ghost" style="padding:.25rem .8rem" onclick="toast('↩️ تم الرد على تقييم ${r.who}')">رد</button></div>`).join('');}
+function addRevClient(f){S.revs.unshift({s:+f[0].value,txt:f[1].value,who:'عميل المنصة'});save();renderRevs();toast('⭐ شكرًا لتقييمك!');confetti();f.reset();return false;}
+function renderOv(){const rev=S.orders.reduce((s,o)=>s+o.tot,0);const low=S.inv.filter(v=>v.q<=5).length;const avg=S.revs.length?(S.revs.reduce((s,r)=>s+r.s,0)/S.revs.length).toFixed(1):'—';$('#ovStats').innerHTML=`
+<div class="stat rev"><b class="num" data-n="${S.orders.length}">0</b><span>إجمالي الطلبات</span></div>
+<div class="stat rev"><b class="num" data-n="${rev}">0</b><span>الإيرادات (${S.set.cur})</span></div>
+<div class="stat rev"><b class="num" data-n="${S.res.length}">0</b><span>الحجوزات</span></div>
+<div class="stat rev"><b class="num" data-n="${S.cust.length}">0</b><span>العملاء</span></div>
+<div class="stat rev"><b class="num" data-n="${low}">0</b><span>⚠️ مخزون منخفض</span></div>
+<div class="stat rev"><b>${avg}</b><span>⭐ متوسط التقييم</span></div>`;nums($('#ovStats'));}
+function renderDynBars(){const tot=S.orders.length||1;$('#dynBars').innerHTML=STS.map(st=>{const c=S.orders.filter(o=>o.st==st).length;const p=Math.round(c/tot*100);return `<div class="brow"><div class="lbl"><span>${st}</span><span>${c} طلب (${p}٪)</span></div><div class="bar"><b data-w="${Math.max(p,3)}%"></b></div></div>`;}).join('');setTimeout(()=>$$('#dynBars .bar b').forEach(b=>b.style.width=b.dataset.w),100);}
+function saveSet(f){S.set={name:$('#setName').value,cur:$('#setCur').value,hours:$('#setHours').value};save();$('#logoName').textContent=S.set.name;toast('💾 تم حفظ الإعدادات');return false;}
+const WORDS=['مشويات على الفحم 🔥','برجر أنجوس ذهبي 🍔','حلويات تذوب في الفم 🍮','مشروبات من عالم تاني 🍹','تجربة ملكية كاملة 👑'];
+let wi=0,ci=0,del=false;
+(function type(){const w=WORDS[wi];ci+=del?-1:1;$('#typed').textContent=w.slice(0,ci);let sp=del?40:90;if(!del&&ci==w.length){sp=1600;del=true;}else if(del&&ci==0){del=false;wi=(wi+1)%WORDS.length;sp=400;}setTimeout(type,sp);})();
+if(S.theme=='light'){document.body.classList.add('light');$('#themeBtn').textContent='🌙';}
+$('#setName').value=S.set.name;$('#setHours').value=S.set.hours;$('#logoName').textContent=S.set.name;
+$('#addCat').innerHTML=CATS.slice(1).map(c=>`<option>${c}</option>`).join('');
+renderCats();renderMenu();renderBest();renderAdmMenu();renderOrders();renderRes();renderBr();renderStaff();renderInv();renderExp();renderOff();renderCust();renderRevs();renderPos();renderCart();reveal($('#v-home'));
+</script>
+</body>
+</html>
